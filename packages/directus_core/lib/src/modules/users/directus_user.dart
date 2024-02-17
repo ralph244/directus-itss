@@ -2,13 +2,13 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'directus_user.g.dart';
 
-// getRawValues(Map<dynamic, dynamic> allValues, String key) {
-//   return allValues;
-// }
+getRawValues(Map<dynamic, dynamic> allValues, String key) {
+  return allValues;
+}
 
-// dynamic rawToJson(dynamic val) {
-//   return null;
-// }
+dynamic rawToJson(dynamic val) {
+  return null;
+}
 
 @JsonSerializable(
   fieldRename: FieldRename.snake,
@@ -42,8 +42,8 @@ class DirectusUser {
   /// THIS WILL NOT CAMEL-CASE values, they will be sent the same way
   /// they are set
   // @experimental
-  // @JsonKey(readValue: getRawValues, includeIfNull: true, toJson: rawToJson)
-  // Map<String, Object?> rawValues = {};
+  @JsonKey(readValue: getRawValues, includeIfNull: true, toJson: rawToJson)
+  Map<String, Object?> rawValues = {};
 
   DirectusUser({
     this.id,
@@ -60,7 +60,7 @@ class DirectusUser {
     this.theme,
     this.status,
     this.role,
-    // this.rawValues = const {},
+    this.rawValues = const {},
   });
 
   /// Used for code generation
@@ -68,6 +68,6 @@ class DirectusUser {
       _$DirectusUserFromJson(json);
 
   /// Used for code generation
-  Map<String, Object?> toJson() => _$DirectusUserToJson(this);
-  // {...rawValues, ..._$DirectusUserToJson(this)};
+  Map<String, Object?> toJson() => //_$DirectusUserToJson(this);
+  {...rawValues, ..._$DirectusUserToJson(this)};
 }
