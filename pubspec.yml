@@ -1,0 +1,6 @@
+name: directus_ex
+
+repository: https://github.com/ralph244/directus-itss/
+
+packages:
+  - packages/**
