@@ -2,5 +2,10 @@ name: directus_ex
 
 repository: https://github.com/ralph244/directus-itss/
 
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
 packages:
   - packages/**
+ 
