@@ -109,9 +109,26 @@ class AuthHandler with StaticToken {
 
     try {
       final dioResponse = await client.post('auth/login', data: data);
+      tokens = await manuallyRefresh();
+      currentUser = CurrentUser(client: client);
+      tfa = Tfa(client: client);
+    } catch (e) {
+      throw DirectusError.fromDio(e);
+    }
+  }
+
+  /// Try to login user.
+  Future<void> loginWithToken({
+    required String token,
+    String? otp,
+  }) async {
+    await removeAuthState();
+
+    try {
+      staticToken(token);
+      final dioResponse = await client.post('users/me');
       final loginDataResponse = AuthResponse.fromResponse(dioResponse);
       await storage.storeLoginData(loginDataResponse);
-
       tokens = loginDataResponse;
       currentUser = CurrentUser(client: client);
       tfa = Tfa(client: client);
