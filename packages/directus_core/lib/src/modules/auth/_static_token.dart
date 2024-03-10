@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 
 mixin StaticToken {
-  static String normalize(String input) {
+  static String? normalize(String? input) {
+    if (input == null) return null;
     return input.length > 255 ? input.substring(0, 255) : input;
   }
 
