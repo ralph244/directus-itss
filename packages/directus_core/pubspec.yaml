@@ -1,6 +1,6 @@
 name: directus_core
-description: The unofficial SDK for Directus with REST API and auth. This core package does not require Flutter.
-version: 0.12.0
+description: The unofficial SDK for Directus with REST API and auth. This core package does not require Flutter. Extended by RLO
+version: 0.12.1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
